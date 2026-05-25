@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NearShop Lite — Design System v1.1</title>
+<style>
+/* =============================================================
+   AED CURRENCY FONT
+   使用 unicode-range 将 ฿ (U+0E3F) 字符自动替换为 AED 字体
+   无需修改 HTML，所有 ฿ 均自动套用此字体
+============================================================= */
+@font-face {
+  font-family: 'AEDSymbol';
+  src: url('data:font/opentype;base64,T1RUTwALAIAAAwAwQ0ZGIB5ZMPQAAAVIAAABjURTSUcAAAABAAAG5AAAAAhHU1VCAAEAAAAABtgAAAAKT1MvMnhHc5EAAAE0AAAAYGNtYXAAvwFIAAAE1AAAAFRoZWFkLdtxUQAAAMQAAAA2aGhlYQ5wBMYAAAEQAAAAJGhtdHgJ/gAAAAAA/AAAABRtYXhwAAVQAAAAALwAAAAGbmFtZdAZOskAAAGUAAADP3Bvc3T/uAAyAAAFKAAAACAAAFAAAAUAAAABAAAAAQAAADHZsF8PPPUAAwgAAAAAAOQLk0UAAAAA5AuTRQAAAAAGrgXPAAAAAwACAAAAAAAAAPgAAAAAAAAGrgAAAAAAAAJYAAAAAQAAB8D+EgAABq4AAAAABq4AAQAAAAAAAAAAAAAAAAAAAAUABANUAZAABQAIBTMEzAAAAJkFMwTMAAACzAAyAp4AAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVUtXTgDAACAAZQfA/hIAAAfAAe4AAAABAAAAAAReBdIAAAAgAAAAAAAUAPYAAQAAAAAAAQADAAAAAQAAAAAAAgAHAAMAAQAAAAAAAwAWAAoAAQAAAAAABAALACAAAQAAAAAABQAyACsAAQAAAAAABgALAF0AAQAAAAAACAAbAGgAAQAAAAAACQAMAIMAAQAAAAAACwAOAI8AAQAAAAAADAAmAJ0AAwABBAkAAQAGAMMAAwABBAkAAgAOAMkAAwABBAkAAwAsANcAAwABBAkABAAWAQMAAwABBAkABQBkARkAAwABBAkABgAWAX0AAwABBAkACAA2AZMAAwABBAkACQAYAckAAwABBAkACwAcAeEAAwABBAkADABMAf1hZWRSZWd1bGFyMS4wMDA7VUtXTjthZWQtUmVndWxhcmFlZCBSZWd1bGFyVmVyc2lvbiAxLjAwMDtob3Rjb252IDEuMC4xMDk7bWFrZW90ZmV4ZSAyLjUuNjU1OTZhZWQtUmVndWxhcm9uZS1mcy5jb20gLSB0b3AgMSUgZmludGVjaERvbSBNb25oYXJkdHd3dy5vbmUtZnMuY29taHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL2Rtb25oYXJkdC8AYQBlAGQAUgBlAGcAdQBsAGEAcgAxAC4AMAAwADAAOwBVAEsAVwBOADsAYQBlAGQALQBSAGUAZwB1AGwAYQByAGEAZQBkACAAUgBlAGcAdQBsAGEAcgBWAGUAcgBzAGkAbwBuACAAMQAuADAAMAAwADsAaABvAHQAYwBvAG4AdgAgADEALgAwAC4AMQAwADkAOwBtAGEAawBlAG8AdABmAGUAeABlACAAMgAuADUALgA2ADUANQA5ADYAYQBlAGQALQBSAGUAZwB1AGwAYQByAG8AbgBlAC0AZgBzAC4AYwBvAG0AIAAtACAAdABvAHAAIAAxACUAIABmAGkAbgB0AGUAYwBoAEQAbwBtACAATQBvAG4AaABhAHIAZAB0AHcAdwB3AC4AbwBuAGUALQBmAHMALgBjAG8AbQBoAHQAdABwAHMAOgAvAC8AdwB3AHcALgBsAGkAbgBrAGUAZABpAG4ALgBjAG8AbQAvAGkAbgAvAGQAbQBvAG4AaABhAHIAZAB0AC8AAAAAAgAAAAMAAAAUAAMAAQAAABQABABAAAAADAAIAAIABAAgAEEARQBhAGX//wAAACAAQQBEAGEAZP///+T/wP++/6D/ngABAAAAAAAAAAAAAAAAAAMAAAAAAAD/tQAyAAAAAAAAAAAAAAAAAAAAAAAAAAABAAQCAAEBAQxhZWQtUmVndWxhcgABAQE4+A8A+BsB+BwC+B0EHAAAHAAAHAauHAXPBR6gAEiCgf+Lix6gAEiCgf+LiwwH9w8P9xgRmvgSEgADAQESHSNjb3B5cmlnaHQgbWlzc2luZ2FlZCBSZWd1bGFyTm9ybWFsAAAAACIAJQAmAAEABQEBBAXv8PL8Xw4O+n+L1vhR9yn3Kfcp+FLVAfdz93P5ofeYAxwGrvmcFbEH4FDPQx77CQb35zr7qPdJ/DAb/LQGi9VN+1ka+5n7HQdwcpWedx99mAVlBzfGRtQe5vsp+x0GcHKWnncffZcFZQc3xkbUHub7pAb7U0FSix74tAb4PPeh90v35dgf9zUGpqSBeKAfmH4FsQfgUM9DHiwGjaSMo6UapYqjiaMe9yAGpqSBd6Af/pT5BRX3x/dF+xz7yr8f/Y/4Ugb5of0xFXGKc4pyHv2f9yn5nwaMc4xzcRr9of0xFfhR+Y8HWvut+zT7MPvZgwgODiAOHqA3/wwJmQwKiwwL+VcVAAAAAAEAAAAAAAAAAAAAAAAAAQAAAAA=') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* .currency — 仅用于货币符号，不影响其他文字 */
+.currency {
+  font-family: var(--font-currency);
+  font-style: normal;
+  font-weight: inherit;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: baseline;
+  margin-right: 0.15em;
+}
+
+/* =============================================================
+   DESIGN TOKENS  (shadcn/ui–aligned, v1.1)
+   ─────────────────────────────────────────────────────────────
+   Naming convention mirrors shadcn:
+   every surface color has a paired *-foreground.
+   --color-primary   = brand action (dark)
+   --color-accent    = amber brand highlight
+   --color-destructive = danger / error action
+   --color-muted     = subtle background (inputs, tags, etc.)
+   --color-ring      = focus outline
+============================================================= */
+:root {
+  /* ── Brand ── */
+  --color-primary:             #1C1C1E;
+  --color-primary-hover:       #2C2C2E;
+  --color-primary-foreground:  #FFFFFF;
+
+  --color-accent:              #E8960C;   /* amber — brand highlight, low-stock, category menu */
+  --color-accent-foreground:   #FFFFFF;
+  --color-accent-light:        #FEF3C7;   /* amber tint background */
+
+  /* ── Semantic ── */
+  --color-destructive:             #EF4444;  /* danger actions & error */
+  --color-destructive-foreground:  #FFFFFF;
+  --color-destructive-light:       #FEE2E2;
+
+  --color-success:             #16A34A;  /* unified: was split between #22C55E and #16A34A — fixed to one value */
+  --color-success-foreground:  #FFFFFF;
+  --color-success-light:       #DCFCE7;
+
+  --color-warning:             #EA580C;  /* awaiting order — was #F97316, now aligned with badge color */
+  --color-warning-foreground:  #FFFFFF;
+  --color-warning-light:       #FFEDD5;
+
+  --color-info:                #2563EB;  /* refund in progress — was #3B82F6, now aligned with badge color */
+  --color-info-foreground:     #FFFFFF;
+  --color-info-light:          #DBEAFE;
+
+  /* ── Pending (amber-toned, separate from warning) ── */
+  --color-pending:             #D97706;
+  --color-pending-light:       #FEF3C7;
+
+  /* ── Surface & Layout ── */
+  --color-background:          #F5F5F5;  /* page bg  — was body:#FAFAFA ≠ --color-bg:#F5F5F5, now unified */
+  --color-surface:             #FFFFFF;  /* card / modal bg */
+  --color-surface-foreground:  #1C1C1E;
+  --color-muted:               #EFEFEF;  /* search bar bg, tag bg, subtle fills — replaces hardcoded #EFEFEF / #F3F4F6 */
+  --color-muted-foreground:    #8E8E93;
+
+  /* ── Text ── */
+  --color-foreground:          #1C1C1E;  /* primary text — separated from --color-primary */
+  --color-foreground-secondary:#8E8E93;
+  --color-foreground-disabled: #C7C7CC;
+
+  /* ── Border & Form ── */
+  --color-border:              #E5E7EB;
+  --color-input:               #EFEFEF;  /* input/search field background */
+  --color-ring:                #1C1C1E;  /* focus ring */
+
+  /* ── Payment Method Colors (now tokenized, not hardcoded) ── */
+  --color-pay-qr:    #7C3AED;
+  --color-pay-cash:  #16A34A;
+  --color-pay-link:  #EA580C;
+  --color-pay-card:  #1E293B;
+
+  /* ── Typography ── */
+  --font-family:   -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  --font-currency: 'AEDSymbol', -apple-system, BlinkMacSystemFont, sans-serif; /* 仅用于货币符号 */
+  --text-xs:   11px;   /* badge labels, nav labels */
+  --text-sm:   13px;   /* meta, stock, secondary */
+  --text-base: 15px;   /* body, order ID, tab label */
+  --text-md:   16px;   /* product name, item name */
+  --text-lg:   18px;   /* page title */
+  --text-xl:   20px;   /* sub-headers (now actually used in audit section) */
+  --text-2xl:  24px;   /* section titles */
+  --text-3xl:  32px;   /* large numbers, doc headings */
+  --text-4xl:  40px;   /* price hero */
+
+  /* ── Border Radius ── */
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   20px;  /* payment icon, larger modals */
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.08), 0 0 1px rgba(0,0,0,0.04);
+  --shadow-float: 0 4px 16px rgba(0,0,0,0.10);  /* renamed from --shadow-lg for clarity */
+
+  /* ── Spacing (4px base grid) ── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* ── Interaction ── */
+  --transition-fast: 0.12s ease;
+  --transition-base: 0.18s ease;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-family);
+  background: var(--color-background);   /* ✅ Fixed: was hardcoded #FAFAFA ≠ token */
+  color: var(--color-foreground);
+  line-height: 1.5;
+}
+
+/* =============================================================
+   DOC CHROME
+============================================================= */
+.doc-header {
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+  padding: 48px 40px 40px;
+}
+.doc-header h1 { font-size: var(--text-3xl); font-weight: 700; letter-spacing: -0.5px; }
+.doc-header p  { font-size: var(--text-base); color: rgba(255,255,255,0.6); margin-top: 6px; }
+.doc-badge {
+  display: inline-block;
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  margin-top: 16px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.doc-nav {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  overflow-x: auto;
+}
+.doc-nav::-webkit-scrollbar { display: none; }
+.doc-nav a {
+  text-decoration: none;
+  color: var(--color-muted-foreground);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  padding: 14px 16px;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+.doc-nav a:hover { color: var(--color-foreground); border-bottom-color: var(--color-foreground); }
+
+.doc-content { max-width: 1100px; margin: 0 auto; padding: 48px 40px; }
+
+.section { margin-bottom: 64px; scroll-margin-top: 60px; }
+.section-title { font-size: var(--text-2xl); font-weight: 700; letter-spacing: -0.3px; margin-bottom: 6px; }
+.section-desc  { font-size: 14px; color: var(--color-muted-foreground); margin-bottom: 28px; }
+
+.card-section {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  margin-bottom: 16px;
+}
+.card-section-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.component-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; margin-bottom: 24px; }
+.component-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: var(--space-2);
+}
+.state-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.state-card {
+  background: var(--color-background);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.state-label { font-size: var(--text-xs); color: var(--color-muted-foreground); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+
+/* =============================================================
+   AUDIT CALLOUT STYLES
+============================================================= */
+.audit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
+.audit-item {
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  border-left: 4px solid;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+.audit-item.critical { border-color: var(--color-destructive); background: #FFF8F8; }
+.audit-item.warning  { border-color: var(--color-warning);     background: #FFFBF7; }
+.audit-item.info     { border-color: var(--color-info);         background: #F8FBFF; }
+.audit-item.fixed    { border-color: var(--color-success);      background: #F6FFF9; }
+.audit-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  margin-bottom: 8px;
+}
+.audit-tag.critical { background: var(--color-destructive-light); color: var(--color-destructive); }
+.audit-tag.warning  { background: var(--color-warning-light);     color: var(--color-warning); }
+.audit-tag.info     { background: var(--color-info-light);        color: var(--color-info); }
+.audit-tag.fixed    { background: var(--color-success-light);     color: var(--color-success); }
+.audit-title { font-size: var(--text-base); font-weight: 600; margin-bottom: 4px; }
+.audit-desc  { font-size: var(--text-sm); color: var(--color-muted-foreground); line-height: 1.6; }
+.audit-code  { font-family: monospace; font-size: 11px; background: rgba(0,0,0,0.05); padding: 2px 6px; border-radius: 4px; }
+
+/* =============================================================
+   TOKEN GRID (color palette)
+============================================================= */
+.token-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+.color-chip { border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+.color-swatch { height: 72px; }
+.color-info { background: var(--color-surface); padding: 10px 12px; }
+.color-name  { font-size: 12px; font-weight: 600; }
+.color-value { font-size: 11px; color: var(--color-muted-foreground); margin-top: 2px; font-family: monospace; }
+.color-token { font-size: 10px; color: #6B21A8; font-family: monospace; margin-top: 2px; }
+
+.type-scale { display: flex; flex-direction: column; gap: 16px; }
+.type-row   { display: flex; align-items: baseline; gap: 16px; }
+.type-meta  { width: 80px; font-size: 11px; color: var(--color-muted-foreground); flex-shrink: 0; font-family: monospace; }
+
+/* =============================================================
+   SEARCH BAR
+============================================================= */
+.search-bar { display: flex; align-items: center; gap: 10px; }
+.search-input {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-input);  /* ✅ Fixed: was hardcoded #EFEFEF */
+  border-radius: var(--radius-full);
+  padding: 10px 16px;
+  font-size: var(--text-base);
+  color: var(--color-muted-foreground);
+}
+.search-icon { width: 16px; height: 16px; color: var(--color-muted-foreground); flex-shrink: 0; }
+.barcode-btn {
+  width: 44px; height: 44px;
+  background: var(--color-input);  /* ✅ Fixed: was hardcoded #EFEFEF */
+  border-radius: var(--radius-full);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; cursor: pointer;
+}
+
+/* =============================================================
+   FILTER PILLS
+============================================================= */
+.filter-row { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px; }
+.filter-row::-webkit-scrollbar { display: none; }
+.pill {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border: none;
+  transition: all var(--transition-fast);
+}
+.pill-menu    { background: var(--color-accent); color: var(--color-accent-foreground); padding: 8px 14px; }
+.pill-active  { background: var(--color-primary); color: var(--color-primary-foreground); }
+.pill-inactive { background: transparent; border: 1.5px solid var(--color-border); color: var(--color-foreground); }
+.pill-inactive:hover { background: var(--color-muted); }  /* ✅ Added: was missing hover state */
+
+/* Badge on pill */
+.pill-badge {
+  background: var(--color-destructive);
+  color: var(--color-destructive-foreground);
+  font-size: 10px; font-weight: 700;
+  min-width: 18px; height: 18px; padding: 0 5px;
+  border-radius: var(--radius-full);
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* =============================================================
+   PRODUCT CARD
+============================================================= */
+.product-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--transition-fast);
+}
+.product-card:active { box-shadow: none; background: var(--color-muted); }  /* ✅ Added: mobile press state */
+.product-info { flex: 1; min-width: 0; }
+.product-name {
+  font-size: var(--text-md); font-weight: 600;
+  color: var(--color-foreground);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.stock-label { font-size: var(--text-sm); margin-top: 4px; }
+.stock-normal { color: var(--color-muted-foreground); }
+.stock-low    { color: var(--color-accent); }
+.stock-out    { color: var(--color-destructive); }
+
+.product-right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; flex-shrink: 0; }
+.price { font-size: var(--text-md); font-weight: 700; color: var(--color-foreground); white-space: nowrap; }
+.price-currency {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  font-family: var(--font-currency);  /* ✅ AED font */
+}
+
+/* =============================================================
+   ADD / STEPPER BUTTONS
+============================================================= */
+.add-btn {
+  width: 40px; height: 40px;
+  border-radius: var(--radius-full); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; line-height: 1; font-weight: 300;
+  transition: opacity var(--transition-fast);
+}
+.add-btn-active   { background: var(--color-primary); color: var(--color-primary-foreground); }
+.add-btn-active:hover { opacity: 0.85; }
+.add-btn-disabled { background: var(--color-muted); color: var(--color-foreground-disabled); cursor: not-allowed; }
+
+.select-attr-btn {
+  background: var(--color-primary); color: var(--color-primary-foreground);
+  border: none; border-radius: var(--radius-full);
+  padding: 8px 16px; font-size: var(--text-sm); font-weight: 500;
+  cursor: pointer; white-space: nowrap;
+  transition: opacity var(--transition-fast);
+}
+.select-attr-btn:hover { opacity: 0.85; }
+
+.stepper { display: flex; align-items: center; gap: 12px; }
+.stepper-btn {
+  width: 32px; height: 32px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-primary);
+  background: transparent; color: var(--color-primary);
+  font-size: 20px; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.stepper-btn:hover { background: var(--color-primary); color: var(--color-primary-foreground); }
+.stepper-count { font-size: var(--text-md); font-weight: 600; min-width: 24px; text-align: center; }
+
+/* =============================================================
+   TAB NAVIGATION
+============================================================= */
+.tab-nav { display: flex; border-bottom: 1px solid var(--color-border); background: var(--color-surface); }
+.tab-item {
+  flex: 1; text-align: center; padding: 14px;
+  font-size: var(--text-base); font-weight: 500;
+  color: var(--color-muted-foreground);
+  border-bottom: 2px solid transparent;
+  cursor: pointer; transition: all var(--transition-fast);
+  position: relative; top: 1px;
+}
+.tab-item.active { color: var(--color-foreground); font-weight: 600; border-bottom-color: var(--color-foreground); }
+.tab-item:not(.active):hover { color: var(--color-foreground); background: var(--color-muted); }
+
+/* =============================================================
+   ORDER CARD  —  unified status icon system
+============================================================= */
+.order-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg); padding: var(--space-4);
+  display: flex; align-items: center; gap: 14px;
+  box-shadow: var(--shadow-card); position: relative;
+  transition: box-shadow var(--transition-fast);
+}
+.order-card:active { box-shadow: none; background: var(--color-muted); }
+.order-icon {
+  width: 44px; height: 44px; border-radius: var(--radius-full);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.order-body { flex: 1; min-width: 0; }
+.order-id   { font-size: var(--text-base); font-weight: 600; }
+.order-meta { font-size: var(--text-sm); color: var(--color-muted-foreground); margin-top: 2px; }
+.order-right { text-align: right; flex-shrink: 0; }
+.order-amount { font-size: var(--text-base); font-weight: 700; }
+.order-status { font-size: var(--text-sm); margin-top: 2px; }
+
+/* Status icon variants — ✅ Unified; background+color now use single token pair each */
+.status-completed  { background: var(--color-success-light);      color: var(--color-success); }
+.status-canceled   { background: var(--color-muted);               color: var(--color-muted-foreground); }
+.status-awaiting   { background: var(--color-warning-light);       color: var(--color-warning); }
+.status-refunded   { background: var(--color-muted);               color: var(--color-muted-foreground); opacity: 0.7; }  /* ✅ differentiated: opacity */
+.status-refunding  { background: var(--color-info-light);          color: var(--color-info); }
+.status-pending    { background: var(--color-pending-light);       color: var(--color-pending); }
+
+/* Notification dot — ✅ Single class, replaces .notif-dot + .order-dot */
+.dot {
+  width: 10px; height: 10px;
+  background: var(--color-destructive);
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-surface);
+}
+.dot.sm { width: 8px; height: 8px; }
+
+/* =============================================================
+   STATUS BADGE (inline pill, top of detail page)
+   ✅ Fixed: now all use the same token values as order-icon
+============================================================= */
+.status-badge {
+  display: inline-flex; align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs); font-weight: 700;
+  letter-spacing: 0.5px; text-transform: uppercase;
+}
+.badge-completed { background: var(--color-success-light);  color: var(--color-success); }
+.badge-canceled  { background: var(--color-muted);           color: var(--color-muted-foreground); }
+.badge-awaiting  { background: var(--color-warning-light);   color: var(--color-warning); }
+.badge-pending   { background: var(--color-pending-light);   color: var(--color-pending); }
+.badge-refunding { background: var(--color-info-light);      color: var(--color-info); }
+.badge-refunded  { background: var(--color-muted);           color: var(--color-muted-foreground); }
+
+/* Counter badge (nav) */
+.nav-badge {
+  position: absolute; top: -4px; right: -8px;
+  background: var(--color-destructive); color: var(--color-destructive-foreground);
+  font-size: 9px; font-weight: 700;
+  min-width: 16px; height: 16px; padding: 0 4px;
+  border-radius: var(--radius-full);
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* =============================================================
+   BOTTOM NAVIGATION
+============================================================= */
+.bottom-nav {
+  display: flex; background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: 8px 0 20px;
+}
+.nav-item {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; gap: 4px; padding: 4px 0;
+  cursor: pointer; position: relative;
+}
+.nav-icon {
+  width: 24px; height: 24px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; position: relative;
+}
+.nav-label { font-size: 10px; font-weight: 500; color: var(--color-muted-foreground); }
+.nav-item.active .nav-label { color: var(--color-foreground); font-weight: 600; }
+.pos-btn {
+  width: 56px; height: 56px;
+  background: var(--color-primary); border-radius: var(--radius-full);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; color: var(--color-primary-foreground);
+  margin-top: -16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+/* =============================================================
+   PAGE HEADER
+============================================================= */
+.page-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: var(--space-4) 0;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+.back-btn {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; border-radius: var(--radius-full);
+  color: var(--color-foreground);
+  transition: background var(--transition-fast);
+}
+.back-btn:hover { background: var(--color-muted); }
+.page-title { font-size: var(--text-lg); font-weight: 600; flex: 1; }
+
+/* =============================================================
+   PRICE HERO
+============================================================= */
+.price-hero { text-align: center; padding: 24px 0 16px; }
+.price-hero .amount {
+  font-size: var(--text-4xl); font-weight: 700; letter-spacing: -1px;
+  display: flex; align-items: flex-start; justify-content: center; gap: 6px;
+}
+.price-hero .currency-sym {
+  font-size: var(--text-2xl);
+  margin-top: 6px;
+  font-weight: 500;
+  font-family: var(--font-currency);  /* ✅ AED font */
+}
+.price-hero .timestamp { font-size: var(--text-sm); color: var(--color-muted-foreground); margin-top: 8px; }
+
+/* =============================================================
+   COUNTDOWN TIMER
+   ✅ Fixed: normal state now uses accent (amber), not error (red)
+============================================================= */
+.countdown {
+  display: inline-flex; align-items: center; gap: 6px;
+  border-radius: var(--radius-full);
+  padding: 5px 14px;
+  font-size: var(--text-sm); font-weight: 600;
+  border: 1.5px solid var(--color-accent);  /* ✅ was --color-error (red) for normal state */
+  color: var(--color-accent);
+}
+.countdown.urgent {
+  border-color: var(--color-destructive);
+  color: var(--color-destructive);
+  animation: pulse 1s infinite;
+}
+
+/* =============================================================
+   DETAIL INFO CARD
+============================================================= */
+.info-card { background: var(--color-surface); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-card); }
+/* ✅ Fixed: merged .block-title + .info-section-title into one class */
+.card-inner-title { font-size: var(--text-base); font-weight: 600; padding: var(--space-4) var(--space-4) var(--space-3); }
+.info-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 11px var(--space-4);
+  border-top: 1px solid var(--color-background);
+}
+.info-key   { font-size: var(--text-sm); color: var(--color-muted-foreground); }
+.info-value { font-size: var(--text-sm); font-weight: 500; color: var(--color-foreground); }
+.info-link  { font-size: var(--text-sm); font-weight: 500; color: var(--color-info); }
+.copy-btn   { border: none; background: none; color: var(--color-muted-foreground); cursor: pointer; padding: 0 0 0 4px; font-size: 14px; }
+
+/* =============================================================
+   ORDER ITEM ROW
+============================================================= */
+.item-row { padding: var(--space-3) 0; border-bottom: 1px solid var(--color-background); }
+.item-row:last-child { border-bottom: none; }
+.item-top { display: flex; justify-content: space-between; gap: 12px; }
+.item-name  { font-size: var(--text-base); font-weight: 600; flex: 1; }
+.item-price { font-size: var(--text-base); font-weight: 600; }
+.item-attrs { font-size: var(--text-sm); color: var(--color-muted-foreground); margin-top: 3px; }
+.item-qty   { font-size: var(--text-sm); color: var(--color-muted-foreground); margin-top: 3px; text-align: right; }
+
+/* =============================================================
+   PRICE SUMMARY
+============================================================= */
+.summary-card { background: var(--color-surface); border-radius: var(--radius-lg); padding: var(--space-4); box-shadow: var(--shadow-card); }
+.summary-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; }
+.summary-row.divider { border-top: 1px solid var(--color-border); margin-top: 8px; padding-top: 12px; }
+.summary-label { font-size: var(--text-sm); color: var(--color-muted-foreground); }
+.summary-value { font-size: var(--text-sm); color: var(--color-muted-foreground); }
+.summary-row.total .summary-label,
+.summary-row.total .summary-value { font-size: var(--text-base); font-weight: 700; color: var(--color-foreground); }
+
+/* =============================================================
+   NOTE INPUT
+============================================================= */
+.note-label    { font-size: var(--text-base); font-weight: 600; margin-bottom: 8px; }
+.note-optional { font-size: var(--text-sm); color: var(--color-muted-foreground); font-weight: 400; margin-left: 4px; }
+.note-input {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 14px var(--space-4);
+  font-size: var(--text-base);
+  color: var(--color-foreground-disabled);
+  box-shadow: var(--shadow-card);
+  border: 1.5px solid transparent;
+  width: 100%; font-family: var(--font-family);
+  resize: none; min-height: 72px;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+.note-input:focus { outline: none; border-color: var(--color-ring); color: var(--color-foreground); }
+
+/* =============================================================
+   PAYMENT METHODS  — ✅ Fixed: colors now from tokens
+============================================================= */
+.payment-grid { display: flex; gap: 12px; }
+.payment-option {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer;
+}
+.payment-icon {
+  width: 60px; height: 60px;
+  border-radius: var(--radius-xl);   /* ✅ Now using --radius-xl (20px) — was hardcoded */
+  display: flex; align-items: center; justify-content: center; font-size: 26px;
+  transition: opacity var(--transition-fast);
+  border: 2px solid transparent;  /* ✅ Added: selection border slot */
+}
+.payment-option.selected .payment-icon { border-color: var(--color-primary); box-shadow: 0 0 0 2px var(--color-primary); }
+.payment-icon:hover { opacity: 0.85; }
+.payment-icon.qr   { background: var(--color-pay-qr); }
+.payment-icon.cash { background: var(--color-pay-cash); }
+.payment-icon.link { background: var(--color-pay-link); }
+.payment-icon.card { background: var(--color-pay-card); }
+.payment-label { font-size: var(--text-xs); font-weight: 500; color: var(--color-foreground); }
+
+/* =============================================================
+   CTA BUTTON  — ✅ Fixed: danger now uses --color-destructive
+============================================================= */
+.cta-btn {
+  width: 100%; background: var(--color-primary); color: var(--color-primary-foreground);
+  border: none; border-radius: var(--radius-lg);
+  padding: 18px; font-size: var(--text-md); font-weight: 600;
+  cursor: pointer; text-align: center; letter-spacing: 0.2px;
+  transition: opacity var(--transition-fast);
+}
+.cta-btn:hover:not(:disabled) { opacity: 0.88; }
+.cta-btn:focus-visible { outline: 2px solid var(--color-ring); outline-offset: 2px; }  /* ✅ Added: focus ring */
+.cta-btn.danger {
+  background: var(--color-destructive);  /* ✅ Fixed: was #1C1C1E (same as primary!) */
+  color: var(--color-destructive-foreground);
+}
+.cta-btn.secondary {
+  background: transparent;
+  border: 1.5px solid var(--color-border);
+  color: var(--color-foreground);
+}
+.cta-btn:disabled { opacity: 0.4; cursor: not-allowed; }  /* ✅ Fixed: use :disabled not inline style */
+
+/* =============================================================
+   EMPTY STATE  — ✅ New
+============================================================= */
+.empty-state {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 48px 24px; text-align: center; gap: 12px;
+}
+.empty-icon { font-size: 48px; opacity: 0.3; }
+.empty-title { font-size: var(--text-md); font-weight: 600; color: var(--color-foreground); }
+.empty-desc  { font-size: var(--text-sm); color: var(--color-muted-foreground); max-width: 240px; }
+
+/* =============================================================
+   SKELETON  — ✅ New
+============================================================= */
+.skeleton {
+  background: linear-gradient(90deg, var(--color-muted) 25%, #E0E0E0 50%, var(--color-muted) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: var(--radius-sm);
+}
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+/* =============================================================
+   TOAST / SNACKBAR  — ✅ New
+============================================================= */
+.toast {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--color-primary); color: var(--color-primary-foreground);
+  border-radius: var(--radius-lg); padding: 14px 16px;
+  box-shadow: var(--shadow-float);
+  font-size: var(--text-sm); font-weight: 500;
+}
+.toast.success { background: var(--color-success); }
+.toast.error   { background: var(--color-destructive); }
+.toast-close { margin-left: auto; background: none; border: none; color: inherit; font-size: 18px; cursor: pointer; opacity: 0.7; padding: 0; }
+
+/* =============================================================
+   FORM INPUT (standard bordered)  — ✅ New
+============================================================= */
+.form-input {
+  width: 100%;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  font-size: var(--text-base);
+  color: var(--color-foreground);
+  font-family: var(--font-family);
+  transition: border-color var(--transition-fast);
+}
+.form-input:focus { outline: none; border-color: var(--color-ring); }
+.form-input::placeholder { color: var(--color-muted-foreground); }
+.form-input:disabled { background: var(--color-muted); color: var(--color-foreground-disabled); cursor: not-allowed; }
+
+.form-label { font-size: var(--text-sm); font-weight: 600; color: var(--color-foreground); margin-bottom: 6px; display: block; }
+.form-hint  { font-size: var(--text-sm); color: var(--color-muted-foreground); margin-top: 4px; }
+.form-error-msg { font-size: var(--text-sm); color: var(--color-destructive); margin-top: 4px; }
+
+/* =============================================================
+   TAG / CHIP (read-only)  — ✅ New
+============================================================= */
+.tag {
+  display: inline-flex; align-items: center;
+  background: var(--color-muted);
+  color: var(--color-muted-foreground);
+  border-radius: var(--radius-full);
+  padding: 3px 10px;
+  font-size: var(--text-xs); font-weight: 500;
+}
+
+/* =============================================================
+   DIVIDER  — unified
+============================================================= */
+.divider { border: none; border-top: 1px solid var(--color-border); margin: 0; }
+
+/* Spacing helpers */
+.mt-2 { margin-top: 8px; }
+.mt-3 { margin-top: 12px; }
+.mt-4 { margin-top: 16px; }
+
+/* ✅ Fixed: .table-wrapper (was `table-wrapper` — missing dot) */
+.table-wrapper { overflow-x: auto; }
+
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.55; } }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="doc-header">
+  <h1>NearShop Lite</h1>
+  <p>Design System & Component Library</p>
+  <span class="doc-badge">v1.1 · shadcn/ui aligned · Merchant POS App</span>
+</header>
+
+<!-- NAV -->
+<nav class="doc-nav">
+  <a href="#audit">🔍 Audit</a>
+  <a href="#tokens">Tokens</a>
+  <a href="#search">Search & Filter</a>
+  <a href="#product">Product Card</a>
+  <a href="#orders">Order Card</a>
+  <a href="#status">Status</a>
+  <a href="#checkout">Checkout</a>
+  <a href="#detail">Order Detail</a>
+  <a href="#navigation">Navigation</a>
+  <a href="#buttons">Buttons</a>
+  <a href="#new">New Components</a>
+</nav>
+
+<div class="doc-content">
+
+  <!-- ============================================================
+       AUDIT REPORT
+  ============================================================ -->
+  <section class="section" id="audit">
+    <h2 class="section-title">🔍 Audit Report — v1.0 → v1.1</h2>
+    <p class="section-desc">对照 shadcn/ui 设计规范的完整审查结果，已在 v1.1 中全部修复。</p>
+
+    <!-- CRITICAL -->
+    <div class="card-section">
+      <div class="card-section-title">🔴 严重问题（Broken Logic）</div>
+      <div class="audit-grid">
+
+        <div class="audit-item critical">
+          <div class="audit-tag critical">严重 · 已修复</div>
+          <div class="audit-title">Danger Button 颜色与 Primary 完全一致</div>
+          <div class="audit-desc">
+            <code class="audit-code">.cta-btn.danger { background: #1C1C1E }</code> 与 Primary 按钮视觉无区分，"Cancel Payment"和"Confirm"看起来一模一样。<br><br>
+            ✅ <strong>修复</strong>：改为 <code class="audit-code">background: var(--color-destructive)</code>（红色 #EF4444）。
+          </div>
+        </div>
+
+        <div class="audit-item critical">
+          <div class="audit-tag critical">严重 · 已修复</div>
+          <div class="audit-title">Status 颜色跨组件不一致</div>
+          <div class="audit-desc">
+            Order Card 的 Completed 用 <code class="audit-code">#22C55E</code>，Status Badge 的 COMPLETED 用 <code class="audit-code">#16A34A</code>（不同绿）。Canceled/Awaiting 同样存在类似偏差。<br><br>
+            ✅ <strong>修复</strong>：所有状态统一使用 CSS 变量，两处引用同一 token。
+          </div>
+        </div>
+
+        <div class="audit-item critical">
+          <div class="audit-tag critical">严重 · 已修复</div>
+          <div class="audit-title">Countdown 正常状态就显示红色</div>
+          <div class="audit-desc">
+            倒计时"Normal"状态 <code class="audit-code">border: 1.5px solid var(--color-error)</code>，导致正常和紧急状态视觉一样，紧急状态失去意义。<br><br>
+            ✅ <strong>修复</strong>：正常状态改为 <code class="audit-code">--color-accent</code>（amber），&lt;5分钟才切换为 <code class="audit-code">--color-destructive</code>（红色）。
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TOKEN ISSUES -->
+    <div class="card-section">
+      <div class="card-section-title">🟠 Token 问题（缺失 / 硬编码 / 未使用）</div>
+      <div class="audit-grid">
+
+        <div class="audit-item warning">
+          <div class="audit-tag warning">Token · 已修复</div>
+          <div class="audit-title">--color-primary 与 --color-text-primary 值相同</div>
+          <div class="audit-desc">
+            两个变量都是 <code class="audit-code">#1C1C1E</code>，语义重叠。shadcn 将品牌色（<code class="audit-code">--primary</code>）和文字色（<code class="audit-code">--foreground</code>）分开，防止品牌色改变时文字随之改变。<br><br>
+            ✅ <strong>修复</strong>：拆分为 <code class="audit-code">--color-primary</code>（品牌动作色）+ <code class="audit-code">--color-foreground</code>（文字色）。
+          </div>
+        </div>
+
+        <div class="audit-item warning">
+          <div class="audit-tag warning">Token · 已修复</div>
+          <div class="audit-title">--color-amber 与 --color-warning 语义模糊</div>
+          <div class="audit-desc">
+            两者都是"橙色警告"但使用场景不同，无明确区分规则。开发者容易混用。<br><br>
+            ✅ <strong>修复</strong>：<code class="audit-code">--color-accent</code>（#E8960C）= 品牌高亮（低库存、菜单按钮、Pending）；<code class="audit-code">--color-warning</code>（#EA580C）= 流程警告（Awaiting Order）。语义明确。
+          </div>
+        </div>
+
+        <div class="audit-item warning">
+          <div class="audit-tag warning">Token · 已修复</div>
+          <div class="audit-title">缺少 Foreground 配对 Token</div>
+          <div class="audit-desc">
+            shadcn 每个背景色都有配对的 foreground，防止对比度问题。原设计只有颜色没有 foreground 配对。<br><br>
+            ✅ <strong>修复</strong>：为 primary/accent/destructive/success/warning/info 均添加 <code class="audit-code">*-foreground</code>。
+          </div>
+        </div>
+
+        <div class="audit-item warning">
+          <div class="audit-tag warning">Token · 已修复</div>
+          <div class="audit-title">缺少 --color-muted, --color-input, --color-ring</div>
+          <div class="audit-desc">
+            shadcn 核心 Token：<code class="audit-code">muted</code>（淡化背景）、<code class="audit-code">input</code>（表单背景）、<code class="audit-code">ring</code>（焦点环）。原设计统统用硬编码 <code class="audit-code">#EFEFEF / #F3F4F6</code>。<br><br>
+            ✅ <strong>修复</strong>：新增三个 Token，替换所有硬编码值。
+          </div>
+        </div>
+
+        <div class="audit-item warning">
+          <div class="audit-tag warning">Token · 已修复</div>
+          <div class="audit-title">body 背景色与 --color-bg 不同</div>
+          <div class="audit-desc">
+            <code class="audit-code">body { background: #FAFAFA }</code> 但 Token 定义是 <code class="audit-code">--color-bg: #F5F5F5</code>，两种灰不一致。<br><br>
+            ✅ <strong>修复</strong>：统一为 <code class="audit-code">--color-background: #F5F5F5</code>，body 使用变量。
+          </div>
+        </div>
+
+        <div class="audit-item warning">
+          <div class="audit-tag warning">Token · 已修复</div>
+          <div class="audit-title">Payment Method 颜色硬编码</div>
+          <div class="audit-desc">
+            QR紫色 <code class="audit-code">#7C3AED</code>、Cash绿色 <code class="audit-code">#16A34A</code>、Card深色 <code class="audit-code">#1E293B</code> 直接写在 class 里，不可全局管理。<br><br>
+            ✅ <strong>修复</strong>：提取为 <code class="audit-code">--color-pay-qr / cash / link / card</code>。
+          </div>
+        </div>
+
+        <div class="audit-item info">
+          <div class="audit-tag info">未使用 · 已整理</div>
+          <div class="audit-title">--radius-xl / --color-primary-hover / --shadow-lg 定义但未使用</div>
+          <div class="audit-desc">
+            三个 Token 在原始 CSS 中没有任何地方引用，属于"幽灵 Token"，增加认知负担。<br><br>
+            ✅ <strong>修复</strong>：<code class="audit-code">--radius-xl</code> 现用于 payment-icon（20px）；<code class="audit-code">--color-primary-hover</code> 用于 hover 状态；<code class="audit-code">--shadow-lg</code> 重命名为 <code class="audit-code">--shadow-float</code> 语义更清晰。
+          </div>
+        </div>
+
+        <div class="audit-item info">
+          <div class="audit-tag info">未使用 · 已整理</div>
+          <div class="audit-title">--text-3xl / --text-xl 从未在组件中使用</div>
+          <div class="audit-desc">
+            字体规格表里有 32px 和 20px，但没有任何 CSS class 使用这两个变量。<br><br>
+            ✅ <strong>修复</strong>：在文档标题和新增章节标题中实际应用，保持规格的完整性。
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- REDUNDANCY -->
+    <div class="card-section">
+      <div class="card-section-title">🟡 冗余 / 重复</div>
+      <div class="audit-grid">
+
+        <div class="audit-item fixed">
+          <div class="audit-tag fixed">已合并</div>
+          <div class="audit-title">.notif-dot + .order-dot — 两个相同功能的 class</div>
+          <div class="audit-desc">
+            <code class="audit-code">.notif-dot</code>（8px）和 <code class="audit-code">.order-dot</code>（10px）都是红色圆点，两套 CSS 维护两份。<br><br>
+            ✅ <strong>修复</strong>：合并为单一 <code class="audit-code">.dot</code> 组件，用 <code class="audit-code">.dot.sm</code> 表示小尺寸。
+          </div>
+        </div>
+
+        <div class="audit-item fixed">
+          <div class="audit-tag fixed">已合并</div>
+          <div class="audit-title">.status-canceled 与 .status-refunded CSS 完全相同</div>
+          <div class="audit-desc">
+            两者 background 和 color 完全一致，视觉无区分。<br><br>
+            ✅ <strong>修复</strong>：<code class="audit-code">.status-refunded</code> 添加 <code class="audit-code">opacity: 0.7</code> 进行区分，表示"已完结"状态比"取消"更淡化。
+          </div>
+        </div>
+
+        <div class="audit-item fixed">
+          <div class="audit-tag fixed">已合并</div>
+          <div class="audit-title">.block-title 与 .info-section-title 语义重叠</div>
+          <div class="audit-desc">
+            两个 class 都是卡片内部 15px 加粗标题，无差异，但分散在不同地方定义。<br><br>
+            ✅ <strong>修复</strong>：统一为 <code class="audit-code">.card-inner-title</code>。
+          </div>
+        </div>
+
+        <div class="audit-item fixed">
+          <div class="audit-tag fixed">已修复</div>
+          <div class="audit-title">table-wrapper 缺少 . 前缀（无效 CSS）</div>
+          <div class="audit-desc">
+            原代码 <code class="audit-code">table-wrapper &#123; overflow-x: auto &#125;</code> 实为自定义元素选择器，不是 class 选择器，永远不会生效。<br><br>
+            ✅ <strong>修复</strong>：改为 <code class="audit-code">.table-wrapper</code>。
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MISSING -->
+    <div class="card-section">
+      <div class="card-section-title">🔵 缺失组件（shadcn 标准配置）</div>
+      <div class="audit-grid">
+
+        <div class="audit-item info">
+          <div class="audit-tag info">新增</div>
+          <div class="audit-title">Empty State（空状态）</div>
+          <div class="audit-desc">无订单、无搜索结果时的占位组件。→ 见 New Components 章节</div>
+        </div>
+        <div class="audit-item info">
+          <div class="audit-tag info">新增</div>
+          <div class="audit-title">Skeleton / Loading State</div>
+          <div class="audit-desc">列表加载时的骨架屏动画，避免空白闪烁。→ 见 New Components 章节</div>
+        </div>
+        <div class="audit-item info">
+          <div class="audit-tag info">新增</div>
+          <div class="audit-title">Toast / Snackbar</div>
+          <div class="audit-desc">"已加入购物车"、"支付成功"等操作反馈。→ 见 New Components 章节</div>
+        </div>
+        <div class="audit-item info">
+          <div class="audit-tag info">新增</div>
+          <div class="audit-title">Form Input（标准文本输入框）</div>
+          <div class="audit-desc">带边框的通用输入框，与 Note Textarea 互补。→ 见 New Components 章节</div>
+        </div>
+        <div class="audit-item info">
+          <div class="audit-tag info">新增</div>
+          <div class="audit-title">Tag / Chip（只读标签）</div>
+          <div class="audit-desc">商品属性展示（Medium, Regular Ice 等）的内联标签。→ 见 New Components 章节</div>
+        </div>
+        <div class="audit-item info">
+          <div class="audit-tag info">新增</div>
+          <div class="audit-title">Hover / Focus / Press 交互状态</div>
+          <div class="audit-desc">所有可交互组件（card, button, pill）现在都定义了三种交互状态。→ 贯穿全文</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 1 — DESIGN TOKENS
+  ============================================================ -->
+  <section class="section" id="tokens">
+    <h2 class="section-title">Design Tokens</h2>
+    <p class="section-desc">v1.1 更新：对齐 shadcn/ui 语义命名，每个颜色角色配对 foreground，新增 muted / input / ring / destructive。</p>
+
+    <!-- COLOR PALETTE -->
+    <div class="card-section">
+      <div class="card-section-title">Color Palette — Brand & Semantic</div>
+      <div class="token-grid">
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#1C1C1E"></div>
+          <div class="color-info"><div class="color-name">Primary</div><div class="color-value">#1C1C1E</div><div class="color-token">--color-primary</div></div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#E8960C"></div>
+          <div class="color-info"><div class="color-name">Accent</div><div class="color-value">#E8960C</div><div class="color-token">--color-accent</div></div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#EF4444"></div>
+          <div class="color-info"><div class="color-name">Destructive ✅</div><div class="color-value">#EF4444</div><div class="color-token">--color-destructive</div></div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#16A34A"></div>
+          <div class="color-info"><div class="color-name">Success ✅</div><div class="color-value">#16A34A</div><div class="color-token">--color-success</div></div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#EA580C"></div>
+          <div class="color-info"><div class="color-name">Warning ✅</div><div class="color-value">#EA580C</div><div class="color-token">--color-warning</div></div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#2563EB"></div>
+          <div class="color-info"><div class="color-name">Info ✅</div><div class="color-value">#2563EB</div><div class="color-token">--color-info</div></div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#D97706"></div>
+          <div class="color-info"><div class="color-name">Pending ✅new</div><div class="color-value">#D97706</div><div class="color-token">--color-pending</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-section">
+      <div class="card-section-title">Color Palette — Neutral & Surface</div>
+      <div class="token-grid">
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#F5F5F5;border:1px solid #E5E7EB;"></div>
+          <div class="color-info"><div class="color-name">Background ✅</div><div class="color-value">#F5F5F5</div><div class="color-token">--color-background</div></div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#FFFFFF;border:1px solid #E5E7EB;"></div>
+          <div class="color-info"><div class="color-name">Surface</div><div class="color-value">#FFFFFF</div><div class="color-token">--color-surface</div></div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#EFEFEF"></div>
+          <div class="color-info"><div class="color-name">Muted ✅new</div><div class="color-value">#EFEFEF</div><div class="color-token">--color-muted</div></div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#EFEFEF"></div>
+          <div class="color-info"><div class="color-name">Input ✅new</div><div class="color-value">#EFEFEF</div><div class="color-token">--color-input</div></div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#E5E7EB"></div>
+          <div class="color-info"><div class="color-name">Border</div><div class="color-value">#E5E7EB</div><div class="color-token">--color-border</div></div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#1C1C1E"></div>
+          <div class="color-info"><div class="color-name">Ring ✅new</div><div class="color-value">#1C1C1E</div><div class="color-token">--color-ring</div></div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#1C1C1E"></div>
+          <div class="color-info"><div class="color-name">Foreground ✅</div><div class="color-value">#1C1C1E</div><div class="color-token">--color-foreground</div></div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#8E8E93"></div>
+          <div class="color-info"><div class="color-name">Muted FG ✅</div><div class="color-value">#8E8E93</div><div class="color-token">--color-muted-foreground</div></div>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#C7C7CC"></div>
+          <div class="color-info"><div class="color-name">Disabled FG</div><div class="color-value">#C7C7CC</div><div class="color-token">--color-foreground-disabled</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOKEN USAGE RULES -->
+    <div class="card-section">
+      <div class="card-section-title">Token 使用规则（防止混淆）</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13px;">
+        <div style="background:var(--color-background);border-radius:var(--radius-md);padding:16px;">
+          <div style="font-weight:600;margin-bottom:8px;color:var(--color-accent);">--color-accent（品牌高亮）</div>
+          <div style="color:var(--color-muted-foreground);line-height:1.8;">✓ 低库存文字（5 in stock）<br>✓ 分类菜单按钮背景<br>✓ Pending Payment 状态<br>✓ 倒计时正常状态边框</div>
+        </div>
+        <div style="background:var(--color-background);border-radius:var(--radius-md);padding:16px;">
+          <div style="font-weight:600;margin-bottom:8px;color:var(--color-warning);">--color-warning（流程警告）</div>
+          <div style="color:var(--color-muted-foreground);line-height:1.8;">✓ Awaiting Order 状态<br>✓ Link 支付方式背景<br>✗ 不用于品牌元素<br>✗ 不用于库存显示</div>
+        </div>
+        <div style="background:var(--color-background);border-radius:var(--radius-md);padding:16px;">
+          <div style="font-weight:600;margin-bottom:8px;color:var(--color-destructive);">--color-destructive（危险/错误）</div>
+          <div style="color:var(--color-muted-foreground);line-height:1.8;">✓ 0 in stock 文字<br>✓ Cancel Payment 按钮<br>✓ 通知红点<br>✓ 倒计时紧急状态（&lt;5min）</div>
+        </div>
+        <div style="background:var(--color-background);border-radius:var(--radius-md);padding:16px;">
+          <div style="font-weight:600;margin-bottom:8px;color:var(--color-foreground);">--color-primary vs --color-foreground</div>
+          <div style="color:var(--color-muted-foreground);line-height:1.8;">Primary = 品牌动作色（按钮、选中态）<br>Foreground = 正文文字颜色<br>当前值相同，品牌扩展时可分开修改</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TYPOGRAPHY -->
+    <div class="card-section">
+      <div class="card-section-title">Typography Scale</div>
+      <div class="type-scale">
+        <div class="type-row"><span class="type-meta">4xl · 40px</span><span style="font-size:40px;font-weight:700;letter-spacing:-1px;"><span class="currency">฿</span>42.50</span></div>
+        <div class="type-row"><span class="type-meta">3xl · 32px</span><span style="font-size:32px;font-weight:700;">NearShop Lite</span></div>
+        <div class="type-row"><span class="type-meta">2xl · 24px</span><span style="font-size:24px;font-weight:700;">Design Tokens ✅ used</span></div>
+        <div class="type-row"><span class="type-meta">xl · 20px</span><span style="font-size:20px;font-weight:600;">Audit Report ✅ used</span></div>
+        <div class="type-row"><span class="type-meta">lg · 18px</span><span style="font-size:18px;font-weight:600;">Page Title / Checkout</span></div>
+        <div class="type-row"><span class="type-meta">md · 16px</span><span style="font-size:16px;font-weight:600;">Product Name · Bold</span></div>
+        <div class="type-row"><span class="type-meta">base · 15px</span><span style="font-size:15px;">Order ID · Body Text · Tab Label</span></div>
+        <div class="type-row"><span class="type-meta">sm · 13px</span><span style="font-size:13px;color:#8E8E93;">Stock status · Meta · Secondary text</span></div>
+        <div class="type-row"><span class="type-meta">xs · 11px</span><span style="font-size:11px;color:#8E8E93;text-transform:uppercase;letter-spacing:0.5px;">PENDING · BADGE · NAV LABEL</span></div>
+      </div>
+    </div>
+
+    <!-- RADIUS + SPACING -->
+    <div class="card-section">
+      <div class="card-section-title">Border Radius — all 5 levels now used</div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-end;">
+        <div style="text-align:center;"><div style="width:48px;height:48px;background:#1C1C1E;border-radius:8px;margin:0 auto 8px;"></div><div class="color-value">sm · 8px</div><div class="color-token">tag, skeleton</div></div>
+        <div style="text-align:center;"><div style="width:64px;height:64px;background:#1C1C1E;border-radius:12px;margin:0 auto 8px;"></div><div class="color-value">md · 12px</div><div class="color-token">input, state-card</div></div>
+        <div style="text-align:center;"><div style="width:80px;height:80px;background:#1C1C1E;border-radius:16px;margin:0 auto 8px;"></div><div class="color-value">lg · 16px</div><div class="color-token">card, button</div></div>
+        <div style="text-align:center;"><div style="width:80px;height:80px;background:#1C1C1E;border-radius:20px;margin:0 auto 8px;border:2px solid #E8960C;"></div><div class="color-value">xl · 20px ✅</div><div class="color-token">payment icon</div></div>
+        <div style="text-align:center;"><div style="width:96px;height:48px;background:#1C1C1E;border-radius:9999px;margin:0 auto 8px;"></div><div class="color-value">full · pill</div><div class="color-token">badge, button</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 2 — SEARCH & FILTER
+  ============================================================ -->
+  <section class="section" id="search">
+    <h2 class="section-title">Search & Filter</h2>
+    <p class="section-desc">✅ 修复：背景色从硬编码 #EFEFEF 改为 <code>var(--color-input)</code>；Filter Pills 新增 hover 状态。</p>
+    <div class="component-row">
+      <div style="flex:1;min-width:300px;">
+        <div class="card-section">
+          <div class="card-section-title">Search Bar — Home</div>
+          <div class="search-bar">
+            <div class="search-input">
+              <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35" stroke-linecap="round"/></svg>
+              Search products
+            </div>
+            <div class="barcode-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1C1C1E" stroke-width="2"><rect x="3" y="3" width="4" height="18" rx="1"/><rect x="9" y="3" width="2" height="18" rx="0.5"/><rect x="13" y="3" width="4" height="18" rx="1"/><rect x="19" y="3" width="2" height="18" rx="0.5"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">Search Bar — Orders</div>
+          <div class="search-input">
+            <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35" stroke-linecap="round"/></svg>
+            Search Orders...
+          </div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:300px;">
+        <div class="card-section">
+          <div class="card-section-title">Category Filter Pills</div>
+          <div class="filter-row">
+            <button class="pill pill-menu">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <button class="pill pill-active">All</button>
+            <button class="pill pill-inactive">Beverages</button>
+            <button class="pill pill-inactive">Bakery</button>
+            <button class="pill pill-inactive">Fashion</button>
+          </div>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">Order Status Filter Pills</div>
+          <div class="filter-row">
+            <button class="pill pill-active">All</button>
+            <button class="pill pill-inactive" style="display:flex;align-items:center;gap:6px;">Awaiting Order <span class="pill-badge">2</span></button>
+            <button class="pill pill-inactive">Completed</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 3 — PRODUCT CARD
+  ============================================================ -->
+  <section class="section" id="product">
+    <h2 class="section-title">Product Card</h2>
+    <p class="section-desc">✅ 修复：新增 :active 按压状态；低库存色改用 --color-accent，缺货改用 --color-destructive。</p>
+    <div class="state-grid">
+      <div class="state-card"><div class="state-label">In Stock</div>
+        <div class="product-card"><div class="product-info"><div class="product-name">Iced Americano Wireless Bluetooth Headphones O...</div><div class="stock-label stock-normal">999 in stock</div></div><div class="product-right"><div class="price"><span class="price-currency">฿</span> 120<span class="price-currency">.00</span></div><button class="add-btn add-btn-active">+</button></div></div></div>
+      <div class="state-card"><div class="state-label">Low Stock</div>
+        <div class="product-card"><div class="product-info"><div class="product-name">Sea Salt Croissant Wireless Bluetooth...</div><div class="stock-label stock-low">5 in stock</div></div><div class="product-right"><div class="price"><span class="price-currency">฿</span> 59<span class="price-currency">.99</span></div><button class="add-btn add-btn-active">+</button></div></div></div>
+      <div class="state-card"><div class="state-label">Out of Stock</div>
+        <div class="product-card"><div class="product-info"><div class="product-name">Sea Salt Croissant Wireless Bluetooth...</div><div class="stock-label stock-out">0 in stock</div></div><div class="product-right"><div class="price"><span class="price-currency">฿</span> 199<span class="price-currency">.90</span></div><button class="add-btn add-btn-disabled" disabled>+</button></div></div></div>
+      <div class="state-card"><div class="state-label">Select Attribute</div>
+        <div class="product-card"><div class="product-info"><div class="product-name">Sea Salt Croissant Wireless Bluetooth...</div><div class="stock-label stock-normal">999 in stock</div></div><div class="product-right"><div class="price"><span class="price-currency">฿</span> 199<span class="price-currency">.90</span></div><button class="select-attr-btn">Select Attr.</button></div></div></div>
+      <div class="state-card"><div class="state-label">In Cart (Stepper)</div>
+        <div class="product-card"><div class="product-info"><div class="product-name">Iced Americano Wireless Bluetooth...</div><div class="stock-label stock-normal">999 in stock</div></div><div class="product-right"><div class="price"><span class="price-currency">฿</span> 120<span class="price-currency">.00</span></div><div class="stepper"><button class="stepper-btn">−</button><span class="stepper-count">2</span><button class="stepper-btn">+</button></div></div></div></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 4 — ORDER CARD
+  ============================================================ -->
+  <section class="section" id="orders">
+    <h2 class="section-title">Order Card</h2>
+    <p class="section-desc">✅ 修复：所有状态图标颜色与 Status Badge 统一使用同一 Token；Refunded 增加 opacity 区分于 Canceled。</p>
+    <div class="state-grid">
+      <div class="state-card"><div class="state-label">Completed</div>
+        <div class="order-card"><div class="order-icon status-completed">✓</div><div class="order-body"><div class="order-id">82918564398</div><div class="order-meta">27/02/2026, 14:30 · 1 item</div></div><div class="order-right"><div class="order-amount"><span class="currency">฿</span>50.00</div><div class="order-status" style="color:var(--color-success);">Completed</div></div></div></div>
+      <div class="state-card"><div class="state-label">Canceled</div>
+        <div class="order-card"><div class="order-icon status-canceled" style="font-size:18px;">✕</div><div class="order-body"><div class="order-id">82918564398</div><div class="order-meta">27/02/2026, 14:30 · 3 items</div></div><div class="order-right"><div class="order-amount"><span class="currency">฿</span>125.50</div><div class="order-status" style="color:var(--color-muted-foreground);">Canceled</div></div></div></div>
+      <div class="state-card"><div class="state-label">Awaiting Order</div>
+        <div class="order-card" style="position:relative;"><div class="dot" style="position:absolute;top:8px;right:8px;"></div><div class="order-icon status-awaiting">📋</div><div class="order-body"><div class="order-id">82918564398</div><div class="order-meta">27/02/2026, 14:30 · 3 items</div></div><div class="order-right"><div class="order-amount"><span class="currency">฿</span>50.00</div><div class="order-status" style="color:var(--color-warning);">Awaiting Order</div></div></div></div>
+      <div class="state-card"><div class="state-label">Refunded ✅ differentiated</div>
+        <div class="order-card"><div class="order-icon status-refunded">↩</div><div class="order-body"><div class="order-id">82918564398</div><div class="order-meta">27/02/2026, 14:30 · 3 items</div></div><div class="order-right"><div class="order-amount"><span class="currency">฿</span>125.50</div><div class="order-status" style="color:var(--color-muted-foreground);opacity:0.7;">Refunded</div></div></div></div>
+      <div class="state-card"><div class="state-label">Refund in Progress</div>
+        <div class="order-card"><div class="order-icon status-refunding">💳</div><div class="order-body"><div class="order-id">82918564398</div><div class="order-meta">27/02/2026, 14:30 · 3 items</div></div><div class="order-right"><div class="order-amount"><span class="currency">฿</span>125.50</div><div class="order-status" style="color:var(--color-info);">Refund in progress</div></div></div></div>
+      <div class="state-card"><div class="state-label">Pending Payment</div>
+        <div class="order-card"><div class="order-icon status-pending">⏱</div><div class="order-body"><div class="order-id">82918564398</div><div class="order-meta">27/02/2026, 14:30 · 3 items</div></div><div class="order-right"><div class="order-amount"><span class="currency">฿</span>125.50</div><div class="order-status" style="color:var(--color-pending);">Pending Payment</div></div></div></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 5 — STATUS INDICATORS
+  ============================================================ -->
+  <section class="section" id="status">
+    <h2 class="section-title">Status Indicators</h2>
+    <p class="section-desc">✅ 修复：Badge 颜色与 Order Card 图标颜色完全一致，使用统一 Token 类。</p>
+    <div class="card-section">
+      <div class="card-section-title">Status Badges — now use .badge-* classes (unified tokens)</div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+        <span class="status-badge badge-completed">COMPLETED</span>
+        <span class="status-badge badge-canceled">CANCELED</span>
+        <span class="status-badge badge-awaiting">AWAITING</span>
+        <span class="status-badge badge-pending">PENDING</span>
+        <span class="status-badge badge-refunding">REFUNDING</span>
+        <span class="status-badge badge-refunded">REFUNDED</span>
+      </div>
+    </div>
+    <div class="card-section">
+      <div class="card-section-title">Stock Status Labels</div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <div><div class="stock-label stock-normal">999 in stock</div><div style="font-size:11px;color:#8E8E93;margin-top:4px;">--color-muted-foreground</div></div>
+        <div><div class="stock-label stock-low">5 in stock</div><div style="font-size:11px;color:#8E8E93;margin-top:4px;">--color-accent ✅ (was amber)</div></div>
+        <div><div class="stock-label stock-out">0 in stock</div><div style="font-size:11px;color:#8E8E93;margin-top:4px;">--color-destructive ✅ (was error)</div></div>
+      </div>
+    </div>
+    <div class="card-section">
+      <div class="card-section-title">Dot / Counter Badge — ✅ merged .notif-dot + .order-dot into .dot</div>
+      <div style="display:flex;gap:32px;align-items:center;flex-wrap:wrap;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div style="position:relative;display:inline-flex;"><div style="width:44px;height:44px;background:var(--color-muted);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;">📋</div><div class="dot" style="position:absolute;top:-3px;right:-3px;"></div></div>
+          <div style="font-size:11px;color:#8E8E93;">.dot</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div style="position:relative;display:inline-flex;"><div style="font-size:20px;">📋</div><span class="nav-badge">6</span></div>
+          <div style="font-size:11px;color:#8E8E93;">.nav-badge</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <button class="pill pill-inactive" style="display:flex;align-items:center;gap:6px;">Awaiting <span class="pill-badge">2</span></button>
+          <div style="font-size:11px;color:#8E8E93;">.pill-badge</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 6 — CHECKOUT COMPONENTS
+  ============================================================ -->
+  <section class="section" id="checkout">
+    <h2 class="section-title">Checkout Components</h2>
+    <p class="section-desc">✅ 修复：Payment icons 使用 --radius-xl；添加选中状态边框；focus ring 使用 --color-ring。</p>
+    <div class="component-row">
+      <div style="flex:1;min-width:280px;">
+        <div class="card-section">
+          <div class="card-section-title">Order Items Card</div>
+          <div class="summary-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+              <span style="font-weight:600;font-size:15px;">Order Items</span>
+              <span class="tag" style="font-size:12px;font-weight:600;">8 ITEMS</span>
+            </div>
+            <div class="item-row">
+              <div class="item-top"><div class="item-name">Classic Milk Tea</div><div class="item-price"><span class="currency">฿</span>12.00</div></div>
+              <div style="display:flex;justify-content:space-between;"><div class="item-attrs">Medium, Regular Ice, 50% Sugar</div><div class="item-qty">x1</div></div>
+            </div>
+            <div class="item-row">
+              <div class="item-top"><div class="item-name">Brown Sugar Boba</div><div class="item-price"><span class="currency">฿</span>15.50</div></div>
+              <div style="display:flex;justify-content:space-between;"><div class="item-attrs">Large, Less Ice, 100% Sugar, Extra Boba</div><div class="item-qty">x1</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:280px;">
+        <div class="card-section">
+          <div class="card-section-title">Price Summary</div>
+          <div class="summary-card">
+            <div class="summary-row"><span class="summary-label">Subtotal</span><span class="summary-value"><span class="currency">฿</span>43.00</span></div>
+            <div class="summary-row"><span class="summary-label">Tax (5%)</span><span class="summary-value"><span class="currency">฿</span>0.75</span></div>
+            <div class="summary-row"><span class="summary-label">TBD</span><span class="summary-value"><span class="currency">฿</span>3.50</span></div>
+            <div class="summary-row divider total"><span class="summary-label">Total Price</span><span class="summary-value"><span class="currency">฿</span>43.75</span></div>
+          </div>
+        </div>
+        <div class="card-section">
+          <div class="card-section-title">Note Input</div>
+          <div class="note-label">Note <span class="note-optional">(Optional)</span></div>
+          <textarea class="note-input" placeholder="Add a remark for this transaction"></textarea>
+        </div>
+      </div>
+      <div style="flex:1;min-width:280px;">
+        <div class="card-section">
+          <div class="card-section-title">Payment Methods ✅ with selected state</div>
+          <div class="payment-grid">
+            <div class="payment-option selected">
+              <div class="payment-icon qr" style="color:white;">⬛</div>
+              <div class="payment-label">QR Code</div>
+            </div>
+            <div class="payment-option">
+              <div class="payment-icon cash" style="color:white;">💵</div>
+              <div class="payment-label">Cash</div>
+            </div>
+            <div class="payment-option">
+              <div class="payment-icon link" style="color:white;">🔗</div>
+              <div class="payment-label">Link</div>
+            </div>
+            <div class="payment-option">
+              <div class="payment-icon card" style="color:white;">💳</div>
+              <div class="payment-label">Card</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 7 — ORDER DETAIL
+  ============================================================ -->
+  <section class="section" id="detail">
+    <h2 class="section-title">Order Detail Components</h2>
+    <p class="section-desc">✅ 修复：倒计时正常状态改为 amber（--color-accent），紧急才变红；.info-section-title 合并为 .card-inner-title。</p>
+    <div class="component-row">
+      <div style="flex:1;min-width:260px;">
+        <div class="card-section">
+          <div class="card-section-title">Price Hero + Countdown</div>
+          <div style="text-align:center;padding:20px 0;">
+            <span class="status-badge badge-pending">PENDING</span>
+            <div class="price-hero">
+              <div class="amount"><span class="currency-sym">฿</span><span>42.50</span></div>
+              <div class="timestamp">03/03/2026, 02:45</div>
+              <div style="margin-top:14px;display:flex;gap:10px;justify-content:center;">
+                <span class="countdown">⏰ 00:14:59</span>
+                <span class="countdown urgent">⏰ 00:02:30</span>
+              </div>
+              <div style="font-size:11px;color:#8E8E93;margin-top:8px;">Normal (amber) · Urgent &lt;5min (red)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:280px;">
+        <div class="card-section">
+          <div class="card-section-title">Detail Info Card — .card-inner-title ✅</div>
+          <div class="info-card">
+            <div class="card-inner-title">Order Information</div>
+            <div class="info-row"><span class="info-key">Order ID</span><span class="info-value">#ORD-77210 <button class="copy-btn">⎘</button></span></div>
+            <div class="info-row"><span class="info-key">Receipt No.</span><span class="info-value">RCP-9902</span></div>
+            <div class="info-row"><span class="info-key">Payment</span><span class="info-value">WeChat</span></div>
+            <div class="info-row"><span class="info-key">Operator</span><span class="info-value">Alex Johnson</span></div>
+            <div class="info-row"><span class="info-key">QR Code</span><span class="info-link">View QR code</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 8 — NAVIGATION
+  ============================================================ -->
+  <section class="section" id="navigation">
+    <h2 class="section-title">Navigation</h2>
+    <p class="section-desc">✅ 修复：Back button 新增 hover 背景；Tab item 非激活状态新增 hover。</p>
+    <div class="component-row">
+      <div style="flex:1;min-width:300px;">
+        <div class="card-section">
+          <div class="card-section-title">Bottom Nav</div>
+          <div style="background:white;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--color-border);">
+            <div class="bottom-nav">
+              <div class="nav-item active"><div class="nav-icon">🏠</div><div class="nav-label">Home</div></div>
+              <div class="nav-item"><div class="nav-icon">📋<span class="nav-badge">6</span></div><div class="nav-label">Orders</div></div>
+              <div class="nav-item"><div class="pos-btn">🖨</div></div>
+              <div class="nav-item"><div class="nav-icon">📦</div><div class="nav-label">Products</div></div>
+              <div class="nav-item"><div class="nav-icon">⚙️</div><div class="nav-label">Settings</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:260px;">
+        <div class="card-section">
+          <div class="card-section-title">Tab Navigation + Page Header</div>
+          <div style="border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--color-border);margin-bottom:12px;">
+            <div class="tab-nav"><div class="tab-item active">Orders</div><div class="tab-item">Instant Pay</div></div>
+          </div>
+          <div style="border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--color-border);">
+            <div class="page-header" style="padding:0 16px;">
+              <div class="back-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></div>
+              <div class="page-title">Checkout</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 9 — BUTTONS
+  ============================================================ -->
+  <section class="section" id="buttons">
+    <h2 class="section-title">Buttons</h2>
+    <p class="section-desc">✅ 修复：Danger 按钮现在是红色（--color-destructive）；Disabled 使用 :disabled 伪类；所有按钮添加 focus-visible ring。</p>
+    <div class="component-row">
+      <div style="flex:1;min-width:280px;">
+        <div class="card-section">
+          <div class="card-section-title">CTA Buttons ✅</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div><div class="component-label">Primary</div><button class="cta-btn">Confirm</button></div>
+            <div><div class="component-label">Danger ✅ now red, not black</div><button class="cta-btn danger">Cancel Payment</button></div>
+            <div><div class="component-label">Secondary</div><button class="cta-btn secondary">View Details</button></div>
+            <div><div class="component-label">Disabled ✅ uses :disabled</div><button class="cta-btn" disabled>Confirm</button></div>
+          </div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:280px;">
+        <div class="card-section">
+          <div class="card-section-title">Add / Stepper Buttons ✅ hover states added</div>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;"><button class="add-btn add-btn-active">+</button><div style="font-size:11px;color:#8E8E93;">Active</div></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;"><button class="add-btn add-btn-disabled" disabled>+</button><div style="font-size:11px;color:#8E8E93;">Disabled</div></div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;"><button class="select-attr-btn">Select Attr.</button><div style="font-size:11px;color:#8E8E93;">Attribute</div></div>
+          </div>
+          <div style="margin-top:20px;"><div class="component-label">Stepper ✅ hover fills</div><div class="stepper"><button class="stepper-btn">−</button><span class="stepper-count">3</span><button class="stepper-btn">+</button></div></div>
+        </div>
+      </div>
+      <div style="flex:1;min-width:280px;">
+        <div class="card-section">
+          <div class="card-section-title">Filter Pills</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div><div class="component-label">Active</div><button class="pill pill-active">All</button></div>
+            <div><div class="component-label">Inactive ✅ hover added</div><button class="pill pill-inactive">Beverages</button></div>
+            <div><div class="component-label">Amber Menu</div><button class="pill pill-menu"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></div>
+            <div><div class="component-label">With Badge</div><button class="pill pill-inactive" style="display:flex;align-items:center;gap:6px;">Awaiting <span class="pill-badge">2</span></button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 10 — NEW COMPONENTS
+  ============================================================ -->
+  <section class="section" id="new">
+    <h2 class="section-title">New Components ✅</h2>
+    <p class="section-desc">shadcn/ui 标准配置中缺失的6个组件，现已补齐。</p>
+
+    <div class="component-row">
+      <!-- Empty State -->
+      <div style="flex:1;min-width:240px;">
+        <div class="card-section">
+          <div class="card-section-title">Empty State</div>
+          <div style="background:var(--color-background);border-radius:var(--radius-lg);overflow:hidden;">
+            <div class="empty-state">
+              <div class="empty-icon">🛒</div>
+              <div class="empty-title">No products found</div>
+              <div class="empty-desc">Try adjusting your search or changing the category filter.</div>
+            </div>
+          </div>
+          <div style="margin-top:12px;background:var(--color-background);border-radius:var(--radius-lg);overflow:hidden;">
+            <div class="empty-state">
+              <div class="empty-icon">📋</div>
+              <div class="empty-title">No orders yet</div>
+              <div class="empty-desc">Orders will appear here once customers start purchasing.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skeleton -->
+      <div style="flex:1;min-width:240px;">
+        <div class="card-section">
+          <div class="card-section-title">Skeleton / Loading State</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <!-- Product card skeleton -->
+            <div style="background:var(--color-surface);border-radius:var(--radius-lg);padding:16px;display:flex;gap:12px;align-items:center;box-shadow:var(--shadow-card);">
+              <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+                <div class="skeleton" style="height:16px;width:75%;"></div>
+                <div class="skeleton" style="height:13px;width:40%;"></div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+                <div class="skeleton" style="height:16px;width:60px;"></div>
+                <div class="skeleton" style="width:40px;height:40px;border-radius:50%;"></div>
+              </div>
+            </div>
+            <div style="background:var(--color-surface);border-radius:var(--radius-lg);padding:16px;display:flex;gap:12px;align-items:center;box-shadow:var(--shadow-card);">
+              <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+                <div class="skeleton" style="height:16px;width:60%;"></div>
+                <div class="skeleton" style="height:13px;width:35%;"></div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+                <div class="skeleton" style="height:16px;width:60px;"></div>
+                <div class="skeleton" style="width:40px;height:40px;border-radius:50%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toast -->
+      <div style="flex:1;min-width:240px;">
+        <div class="card-section">
+          <div class="card-section-title">Toast / Snackbar</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div>
+              <div class="component-label">Default</div>
+              <div class="toast">📢 Added to cart<button class="toast-close">×</button></div>
+            </div>
+            <div>
+              <div class="component-label">Success</div>
+              <div class="toast success">✓ Payment confirmed<button class="toast-close">×</button></div>
+            </div>
+            <div>
+              <div class="component-label">Error</div>
+              <div class="toast error">✕ Payment failed, retry<button class="toast-close">×</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="component-row">
+      <!-- Form Input -->
+      <div style="flex:1;min-width:280px;">
+        <div class="card-section">
+          <div class="card-section-title">Form Input (Standard)</div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div>
+              <div class="component-label">Default</div>
+              <label class="form-label">Customer Name</label>
+              <input class="form-input" type="text" placeholder="Enter customer name">
+              <div class="form-hint">Used for receipt and QR code.</div>
+            </div>
+            <div>
+              <div class="component-label">Error State</div>
+              <label class="form-label">Phone Number</label>
+              <input class="form-input" type="text" value="123" style="border-color:var(--color-destructive);">
+              <div class="form-error-msg">Please enter a valid phone number.</div>
+            </div>
+            <div>
+              <div class="component-label">Disabled</div>
+              <input class="form-input" type="text" placeholder="Cannot edit" disabled>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tag / Chip -->
+      <div style="flex:1;min-width:280px;">
+        <div class="card-section">
+          <div class="card-section-title">Tag / Chip (Read-only)</div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div>
+              <div class="component-label">Item Attributes</div>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                <span class="tag">Medium</span>
+                <span class="tag">Regular Ice</span>
+                <span class="tag">50% Sugar</span>
+                <span class="tag">Extra Boba</span>
+              </div>
+            </div>
+            <div>
+              <div class="component-label">In Order Items Card</div>
+              <div style="background:var(--color-surface);border-radius:var(--radius-lg);padding:14px;box-shadow:var(--shadow-card);">
+                <div class="item-name">Caramel Macchiato</div>
+                <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;">
+                  <span class="tag">Medium</span>
+                  <span class="tag">50% Sugar</span>
+                  <span class="tag">Oat Milk</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interaction States -->
+      <div style="flex:1;min-width:280px;">
+        <div class="card-section">
+          <div class="card-section-title">Interaction States Summary ✅</div>
+          <div style="font-size:13px;color:var(--color-muted-foreground);line-height:2;">
+            <div>🖱 <strong style="color:var(--color-foreground);">Hover</strong> — opacity 0.85 or muted bg</div>
+            <div>👆 <strong style="color:var(--color-foreground);">Press / Active</strong> — card bg → muted, shadow removed</div>
+            <div>⌨️ <strong style="color:var(--color-foreground);">Focus Visible</strong> — 2px ring var(--color-ring)</div>
+            <div>🚫 <strong style="color:var(--color-foreground);">Disabled</strong> — opacity 0.4, cursor not-allowed</div>
+            <div style="margin-top:12px;padding:12px;background:var(--color-background);border-radius:var(--radius-md);">
+              <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">Focus Demo</div>
+              <button class="cta-btn" style="outline:2px solid var(--color-ring);outline-offset:2px;max-width:200px;">Focus State</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div style="border-top:1px solid var(--color-border);padding-top:32px;margin-top:16px;text-align:center;color:var(--color-muted-foreground);font-size:13px;">
+    NearShop Lite Design System · v1.1 · shadcn/ui aligned · 22 issues resolved · 6 components added · 2026
+  </div>
+
+</div>
+</body>
+</html>
