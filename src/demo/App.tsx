@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/globals.css";
 
-import { Button, BackButton, SelectAttrButton } from "../components/ui/button";
+import { Button, BackButton } from "../components/ui/button";
 import { StatusBadge, NavBadge, PillBadge, Dot } from "../components/ui/badge";
 import { Pill, FilterRow } from "../components/ui/pill";
 import { Tag, Divider } from "../components/ui/tag";
@@ -12,6 +12,7 @@ import { BottomNav, TabNav, PageHeader } from "../components/ui/navigation";
 import { PaymentGrid } from "../components/ui/payment";
 import { PriceHero, Countdown, OrderItem } from "../components/ui/price-hero";
 import { Skeleton, ProductCardSkeleton, OrderCardSkeleton } from "../components/ui/skeleton";
+import { SelectAttrButton } from "../components/ui/button";
 import { Toast } from "../components/ui/toast";
 import { EmptyState } from "../components/ui/empty-state";
 import type { PaymentMethod } from "../lib/tokens";
@@ -162,6 +163,7 @@ export default function App() {
             <ProductCard name="Iced Matcha Latte" price="฿22.00" stock={12} stockLevel="normal" action={<AddButton active />} />
             <ProductCard name="Mango Sticky Rice" price="฿35.00" stock={5} stockLevel="low" action={<AddButton active />} />
             <ProductCard name="Thai Milk Tea" price="฿18.00" stock={0} stockLevel="out" action={<AddButton active={false} />} />
+          <ProductCard name="Signature Milk Tea" price="฿28.00" stock={8} stockLevel="normal" action={<SelectAttrButton>Select Size</SelectAttrButton>} />
           </div>
 
           <Label>Order Cards</Label>
@@ -264,7 +266,15 @@ export default function App() {
             <EmptyState icon="📋" title="No orders yet" description="Orders will appear here once customers start placing them." />
           </div>
 
-          <Label>Skeleton Loading</Label>
+          <Label>Skeleton Primitive (custom shapes)</Label>
+          <div style={{ display: "flex", gap: 12, marginBottom: 16, alignItems: "center" }}>
+            <Skeleton style={{ width: 48, height: 48, borderRadius: "var(--radius-full)" }} />
+            <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
+              <Skeleton style={{ height: 16, width: "60%" }} />
+              <Skeleton style={{ height: 12, width: "40%" }} />
+            </div>
+          </div>
+          <Label>Skeleton Loading (preset cards)</Label>
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             <ProductCardSkeleton />
             <OrderCardSkeleton />

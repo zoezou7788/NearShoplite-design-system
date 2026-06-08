@@ -1,7 +1,13 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-const Tag = React.forwardRef<HTMLSpanElement, React.HTMLAttributes<HTMLSpanElement>>(
+/** Read-only chip — product attributes (Medium, Regular Ice, No Sugar) */
+export interface TagProps extends React.HTMLAttributes<HTMLSpanElement> {}
+
+/** Horizontal rule using the border token */
+export interface DividerProps extends React.HTMLAttributes<HTMLHRElement> {}
+
+const Tag = React.forwardRef<HTMLSpanElement, TagProps>(
   ({ className, ...props }, ref) => (
     <span
       ref={ref}
@@ -16,7 +22,7 @@ const Tag = React.forwardRef<HTMLSpanElement, React.HTMLAttributes<HTMLSpanEleme
 );
 Tag.displayName = "Tag";
 
-const Divider = React.forwardRef<HTMLHRElement, React.HTMLAttributes<HTMLHRElement>>(
+const Divider = React.forwardRef<HTMLHRElement, DividerProps>(
   ({ className, ...props }, ref) => (
     <hr
       ref={ref}

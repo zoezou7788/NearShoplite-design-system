@@ -39,6 +39,7 @@ const config: Config = {
         },
         pending: {
           DEFAULT: "var(--color-pending)",
+          foreground: "var(--color-pending-foreground)",
           light: "var(--color-pending-light)",
         },
         // Surface & Layout
@@ -102,7 +103,10 @@ const config: Config = {
         4: "var(--space-4)",
         5: "var(--space-5)",
         6: "var(--space-6)",
-        8: "var(--space-8)",
+        8:  "var(--space-8)",
+        10: "var(--space-10)",
+        12: "var(--space-12)",
+        16: "var(--space-16)",
       },
       transitionDuration: {
         fast: "120ms",

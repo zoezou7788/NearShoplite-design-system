@@ -139,25 +139,31 @@ const InfoCardTitle = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTML
 );
 InfoCardTitle.displayName = "InfoCardTitle";
 
-interface InfoRowProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface InfoRowProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Row label (left side) */
   label: string;
+  /** Row value — any React node (right side) */
   value?: React.ReactNode;
+  /** Renders value in info blue (e.g. clickable links) */
   isLink?: boolean;
+  /** Shows a copy icon button; wire up `onCopy` for clipboard action */
   copyable?: boolean;
+  /** Callback when the copy button is clicked */
+  onCopy?: () => void;
 }
 
 const InfoRow = React.forwardRef<HTMLDivElement, InfoRowProps>(
-  ({ className, label, value, isLink, copyable, ...props }, ref) => (
+  ({ className, label, value, isLink, copyable, onCopy, ...props }, ref) => (
     <div
       ref={ref}
       className={cn("flex justify-between items-center px-4 py-[11px] border-t border-[var(--color-background)]", className)}
       {...props}
     >
       <span className="text-[var(--text-sm)] text-[var(--color-muted-foreground)]">{label}</span>
-      <span className={cn("text-[var(--text-sm)] font-medium", isLink ? "text-[var(--color-info)]" : "text-[var(--color-foreground)]")}>
+      <span className={cn("text-[var(--text-sm)] font-medium flex items-center gap-1", isLink ? "text-[var(--color-info)]" : "text-[var(--color-foreground)]")}>
         {value}
         {copyable && (
-          <button className="border-none bg-transparent text-[var(--color-muted-foreground)] cursor-pointer pl-1 text-[14px]">⎘</button>
+          <button onClick={onCopy} className="border-none bg-transparent text-[var(--color-muted-foreground)] cursor-pointer pl-1 text-[14px] leading-none">⎘</button>
         )}
       </span>
     </div>

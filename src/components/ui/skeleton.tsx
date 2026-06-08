@@ -1,7 +1,10 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-const Skeleton = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+/** Base shimmer skeleton block — compose to build custom loading states */
+export interface SkeletonProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
@@ -17,8 +20,11 @@ const Skeleton = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
 );
 Skeleton.displayName = "Skeleton";
 
+export interface ProductCardSkeletonProps { className?: string }
+export interface OrderCardSkeletonProps { className?: string }
+
 /* ── Product Card skeleton ── */
-const ProductCardSkeleton: React.FC<{ className?: string }> = ({ className }) => (
+const ProductCardSkeleton: React.FC<ProductCardSkeletonProps> = ({ className }) => (
   <div className={cn("bg-[var(--color-surface)] rounded-[var(--radius-lg)] p-4 flex items-center gap-3 shadow-[var(--shadow-card)]", className)}>
     <Skeleton className="w-12 h-12 rounded-[var(--radius-md)] flex-shrink-0" />
     <div className="flex-1 space-y-2">
@@ -33,7 +39,7 @@ const ProductCardSkeleton: React.FC<{ className?: string }> = ({ className }) =>
 );
 
 /* ── Order Card skeleton ── */
-const OrderCardSkeleton: React.FC<{ className?: string }> = ({ className }) => (
+const OrderCardSkeleton: React.FC<OrderCardSkeletonProps> = ({ className }) => (
   <div className={cn("bg-[var(--color-surface)] rounded-[var(--radius-lg)] p-4 flex items-center gap-3.5 shadow-[var(--shadow-card)]", className)}>
     <Skeleton className="w-11 h-11 rounded-full flex-shrink-0" />
     <div className="flex-1 space-y-2">

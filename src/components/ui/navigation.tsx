@@ -5,14 +5,18 @@ import { BackButton } from "./button";
 /* =============================================================
    BOTTOM NAVIGATION
 ============================================================= */
-interface NavItem {
+export interface NavItem {
+  /** Icon element or emoji string */
   icon: React.ReactNode;
+  /** Label shown below the icon */
   label: string;
+  /** Red badge count (hidden when 0 or undefined) */
   badgeCount?: number;
+  /** When true, renders as elevated center POS button */
   isPOS?: boolean;
 }
 
-interface BottomNavProps {
+export interface BottomNavProps {
   items: NavItem[];
   activeIndex: number;
   onSelect: (index: number) => void;

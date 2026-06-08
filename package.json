@@ -13,6 +13,7 @@
     },
     "./styles": "./dist/globals.css"
   },
+  "type": "module",
   "files": ["dist"],
   "scripts": {
     "dev": "vite",
